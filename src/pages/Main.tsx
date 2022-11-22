@@ -1,6 +1,7 @@
 import { Center, Container, Heading, Input, Button, useToast } from '@chakra-ui/react';
 import { useState } from 'react';
 import urlService from '../core/api/url.service';
+import { getErrorMessage } from '../core/helpers/getErrorMessage';
 import { IError } from '../core/interfaces/error.interface';
 import { ManageUrl } from './ManageUrl';
 
@@ -47,7 +48,7 @@ export const Main = () => {
       setUrl('');
     } catch (error) {
       toast({
-        title: (error as IError).response.data.message,
+        title: getErrorMessage(error as IError),
         status: 'error',
         isClosable: true,
       });

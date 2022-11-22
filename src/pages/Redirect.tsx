@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import urlService from '../core/api/url.service';
 import { IError } from '../core/interfaces/error.interface';
+import { getErrorMessage } from '../core/helpers/getErrorMessage';
 
 export const Redirect = () => {
 
@@ -21,7 +22,7 @@ export const Redirect = () => {
                 window.location.href = res.data;
             } catch (error) {
                 toast({
-                    title: (error as IError).response.data.message,
+                    title: getErrorMessage(error as IError),
                     status: 'error',
                     isClosable: true,
                 });
