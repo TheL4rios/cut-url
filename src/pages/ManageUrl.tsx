@@ -11,10 +11,11 @@ export const ManageUrl = ({ code }: { code: string }) => {
 
   const [isCopying, setIsCopying] = useState(false);
   const [generateQr, setGenerateQr] = useState(false);
-  const [url] = useState(`${URL_WEB}/${code}`);
+  const [url, setUrl] = useState(`${URL_WEB}/${code}`);
 
   useEffect(() => {
     setGenerateQr(false);
+    setUrl(`${URL_WEB}/${code}`);
   }, [code]);
 
   const onCopy = async () => {
